@@ -1,9 +1,7 @@
-package campus.tech.kakao.map.Util
+package campus.tech.kakao.map.Model
 
 import android.database.Cursor
-import android.database.sqlite.SQLiteDatabase
 import android.provider.BaseColumns
-import campus.tech.kakao.map.Model.Place
 
 object PlaceContract {
     const val DATABASE_NAME = "Place.db"
@@ -50,7 +48,7 @@ object PlaceContract {
             cursor.getString(
                 cursor.getColumnIndexOrThrow(PlaceEntry.COLUMN_ADDRESS)
             ),
-            CategoryUtil.intToCategory(
+            PlaceCategory.intToCategory(
                 cursor.getInt(
                     cursor.getColumnIndexOrThrow(PlaceEntry.COLUMN_CATEGORY)
                 )
@@ -64,14 +62,14 @@ object PlaceContract {
         while (cursor.moveToNext()) {
             val place = Place(
                 cursor.getString(
-                    cursor.getColumnIndexOrThrow(PlaceContract.PlaceEntry.COLUMN_NAME)
+                    cursor.getColumnIndexOrThrow(PlaceEntry.COLUMN_NAME)
                 ),
                 cursor.getString(
-                    cursor.getColumnIndexOrThrow(PlaceContract.PlaceEntry.COLUMN_ADDRESS)
+                    cursor.getColumnIndexOrThrow(PlaceEntry.COLUMN_ADDRESS)
                 ),
-                CategoryUtil.intToCategory(
+                PlaceCategory.intToCategory(
                     cursor.getInt(
-                        cursor.getColumnIndexOrThrow(PlaceContract.PlaceEntry.COLUMN_CATEGORY)
+                        cursor.getColumnIndexOrThrow(PlaceEntry.COLUMN_CATEGORY)
                     )
                 )
             )
