@@ -31,7 +31,7 @@ class SearchViewModel(private val repository: PlaceRepository) : ViewModel() {
         } else {
             if (isPlaceInFavorite(name)) return
             // favoritePlace.value에 바로 add할 시 Adapter에서 변화를 감지 못함
-            val favorites = favoritePlace.value!!
+            val favorites = favoritePlace.value ?: mutableListOf<Place>()
             favorites.add(place)
             _favoritePlace.value = favorites
         }
